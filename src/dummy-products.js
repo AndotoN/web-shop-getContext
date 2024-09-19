@@ -55,5 +55,13 @@ export const DUMMY_PRODUCTS = [
     price: 179.99,
     description:
     'This sophisticated navy wool trench coat features a belted waist and double-breasted front. Its elegant design with a lapel collar makes it perfect for fall and winter, offering both style and warmth.'
-    }
+    },
+    {
+      id: '1515',
+      image: coat,
+      title: 'Navy Wool Trench Coat',
+      price: 179.99,
+      description:
+      'This sophisticated navy wool trench coat features a belted waist and double-breasted front. Its elegant design with a lapel collar makes it perfect for fall and winter, offering both style and warmth.'
+      }
 ];

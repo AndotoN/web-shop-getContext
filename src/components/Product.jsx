@@ -5,6 +5,7 @@ export default function Product({
   title,
   price,
   description,
+
   onAddToCart,
 }) {
   return (
