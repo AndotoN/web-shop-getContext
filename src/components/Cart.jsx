@@ -4,6 +4,10 @@ import { CartContext } from "../context/shopping-cart-context";
 
 export default function Cart() {
   const { items, updateItemQuantity } = useContext(CartContext);
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="space-y-4">

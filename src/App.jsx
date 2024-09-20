@@ -1,5 +1,5 @@
 // App.jsx
-import { useState } from "react";
+
 import Header from "./components/Header";
 import Shop from "./components/Shop";
 import { DUMMY_PRODUCTS } from "./dummy-products";
@@ -9,10 +9,6 @@ import CartContextProvider, {
 import Product from "./components/Product";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState({
-    items: [],
-  });
-
   return (
     <CartContextProvider>
       <Header />
