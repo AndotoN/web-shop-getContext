@@ -1,15 +1,17 @@
 // Header.jsx
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import CartModal from "./CartModal";
 
-export default function Header({ cart, onUpdateCartItemQuantity }) {
+import { CartContext } from "../context/shopping-cart-context";
+
+export default function Header() {
   const modal = useRef(); // Create a ref for the CartModal
 
+  // Use context to get the items array
+  const { items } = useContext(CartContext);
+
   // Get total quantity from the cart
-  const cartQuantity = cart.items.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const cartQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
   function handleOpenCartClick() {
     modal.current.open();
@@ -34,18 +36,11 @@ export default function Header({ cart, onUpdateCartItemQuantity }) {
     );
   }
 
-  //console.log("Header cart items:", cart.items); // Log the items array
   console.log("Header item quantity:", cartQuantity); // Log total quantity of all items in cart
 
   return (
     <>
-      <CartModal
-        ref={modal}
-        cartItems={cart.items}
-        onUpdateCartItemQuantity={onUpdateCartItemQuantity}
-        title={"Your cart"}
-        actions={modalActions}
-      />
+      <CartModal ref={modal} title={"Your cart"} actions={modalActions} />
       <header className="bg-gradient-to-r from-purple-600 to-purple-400 shadow-md p-6 flex justify-between items-center">
         <h1 className="text-white text-3xl font-bold">Web shop</h1>
         <div className="flex items-center space-x-4">

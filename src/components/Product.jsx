@@ -1,13 +1,11 @@
 // Product.jsx
-export default function Product({
-  id,
-  image,
-  title,
-  price,
-  description,
+import { useContext } from "react";
 
-  onAddToCart,
-}) {
+import { CartContext } from "../context/shopping-cart-context";
+
+export default function Product({ id, image, title, price, description }) {
+  const { addItemToCart } = useContext(CartContext);
+
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
       <img src={image} alt={title} className="w-full h-48 object-cover" />
@@ -18,7 +16,7 @@ export default function Product({
           ${price}
         </span>
         <button
-          onClick={() => onAddToCart(id)}
+          onClick={() => addItemToCart(id)}
           className="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
         >
           Add to Cart

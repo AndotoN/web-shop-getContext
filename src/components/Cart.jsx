@@ -1,4 +1,10 @@
-export default function Cart({ items, onUpdateItemQuantity }) {
+import { useContext } from "react";
+
+import { CartContext } from "../context/shopping-cart-context";
+
+export default function Cart() {
+  const { items, updateItemQuantity } = useContext(CartContext);
+
   return (
     <div className="space-y-4">
       {items.length === 0 ? (
@@ -12,14 +18,14 @@ export default function Cart({ items, onUpdateItemQuantity }) {
             <span className="font-semibold text-gray-700">{item.name}</span>
             <div className="flex items-center space-x-2">
               <button
-                onClick={() => onUpdateItemQuantity(item.id, -1)}
+                onClick={() => updateItemQuantity(item.id, -1)}
                 className="bg-red-500 text-white px-2 py-1 rounded-full hover:bg-red-600 transition duration-200"
               >
                 -
               </button>
               <span className="font-medium">{item.quantity}</span>
               <button
-                onClick={() => onUpdateItemQuantity(item.id, 1)}
+                onClick={() => updateItemQuantity(item.id, 1)}
                 className="bg-green-500 text-white px-2 py-1 rounded-full hover:bg-green-600 transition duration-200"
               >
                 +
